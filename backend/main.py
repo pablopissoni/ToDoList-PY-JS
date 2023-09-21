@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Union
+from database import connect_to_database, execute_query
 
 app = FastAPI()
 
@@ -10,10 +11,14 @@ class Item(BaseModel):
     is_offer: Union[bool, None] = None
 
 
+# connect_to_database()
+# get = execute_query()
+# print(get)
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    result = execute_query()
+    return result
 
 
 @app.get("/items/{item_id}")
