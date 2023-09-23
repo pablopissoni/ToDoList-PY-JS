@@ -4,16 +4,12 @@ from typing import Union
 from database import connect_to_database, execute_query
 
 app = FastAPI()
-
+# Iniciar Servidor con "uvicorn main:app --reload"
 class Item(BaseModel):
     name: str
     price: float
     is_offer: Union[bool, None] = None
 
-
-# connect_to_database()
-# get = execute_query()
-# print(get)
 
 @app.get("/")
 def read_root():
